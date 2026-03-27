@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Song Sorter</title>
+  <title>Adam Scott Character Sorter</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -26,7 +26,7 @@
   </style>
 </head>
 <body>
-  <h1>My Song Sorter</h1>
+  <h1>Adam Scott Character Sorter</h1>
   <p>Pick your favorite each round.</p>
 
   <div id="sorter">
@@ -38,11 +38,48 @@
 
   <script>
     const songs = [
-      "Song 1",
-      "Song 2",
-      "Song 3",
-      "Song 4",
-      "Song 5"
+      "mark scout (severance)",
+      "caleb sinclaire (the vicious kind)",
+      "henry pollard (party down)",
+      "max jennifer (ghosted)",
+      "novak (piranha 3d)",
+      "jacques (hellraiser 4)",
+      "josh (party of five)",
+      "clyde (bachelorette)",
+      "mark s (severance)",
+      "matthew sobvechick (sleeping with other people)",
+      "jeremy (our idiot brother)",
+      "ben wyatt (parks and rec)",
+      "jason (friends with kids)",
+      "derek (step brothers)",
+      "griff hawkins (boy meets world)",
+      "carter (ACOD)",
+      "gary (little evil)",
+      "michael (passenger side)",
+      "ben parker (madame web)",
+      "ronnie (ronnie)",
+      "embry (high crimes)",
+      "will (flower)",
+      "tom (krampus)",
+      "jason (see girl run)",
+      "remy (monster in law),
+      "daniel (who loves the sun)",
+      "mcpherson (torque)",
+      "alex (the overnight)",
+      "joshua (august)",
+      "adam jr. (httm2)",
+      "palek (tell me you love me)",
+      "ted (the secret life of walter mitty)",
+      "trevor (the good place)",
+      "ed mackenzie (big little lies)",
+      "robbie (my blind brother)",
+      "mike (lovely, still)",
+      "johnny (the aviator)",
+      "adam stanfill (payback)",
+      "peter (seven and a match)",
+      "stu (two days)",
+      "lincoln gumb (strip law)",
+      "jeremy (leap year)",
     ];
 
     let scores = {};
@@ -92,7 +129,7 @@
 
       ranked.forEach(song => {
         const li = document.createElement("li");
-        li.textContent = `${song} (${scores[song]} wins)`;
+        li.textContent = `${song};
         results.appendChild(li);
       });
     }
