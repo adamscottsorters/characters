@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Song Sorter</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 700px;
+      margin: 40px auto;
+      padding: 20px;
+      line-height: 1.5;
+    }
+    button {
+      display: block;
+      width: 100%;
+      margin: 12px 0;
+      padding: 16px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    #results li {
+      margin: 6px 0;
+    }
+  </style>
+</head>
+<body>
+  <h1>Adam Scott Character Sorter</h1>
+  <p>Pick your favourite each round.</p>
+
+  <div id="sorter">
+    <button id="optionA"></button>
+    <button id="optionB"></button>
+  </div>
+
+  <ol id="results" style="display:none;"></ol>
+
+  <script>
+    const songs = [
+      "Song 1",
+      "Song 2",
+      "Song 3",
+      "Song 4",
+      "Song 5"
+    ];
+
+    let scores = {};
+    let matchups = [];
+    let current = 0;
+
+    songs.forEach(song => scores[song] = 0);
+
+    for (let i = 0; i < songs.length; i++) {
+      for (let j = i + 1; j < songs.length; j++) {
+        matchups.push([songs[i], songs[j]]);
+      }
+    }
+
+    matchups = matchups.sort(() => Math.random() - 0.5);
+
+    const optionA = document.getElementById("optionA");
+    const optionB = document.getElementById("optionB");
+    const sorter = document.getElementById("sorter");
+    const results = document.getElementById("results");
+
+    function showMatchup() {
+      if (current >= matchups.length) {
+        showResults();
+        return;
+      }
+
+      const [a, b] = matchups[current];
+      optionA.textContent = a;
+      optionB.textContent = b;
+
+      optionA.onclick = () => pick(a);
+      optionB.onclick = () => pick(b);
+    }
+
+    function pick(song) {
+      scores[song]++;
+      current++;
+      showMatchup();
+    }
+
+    function showResults() {
+      sorter.style.display = "none";
+      results.style.display = "block";
+
+      const ranked = [...songs].sort((a, b) => scores[b] - scores[a]);
+
+      ranked.forEach(song => {
+        const li = document.createElement("li");
+        li.textContent = `${song} (${scores[song]} wins)`;
+        results.appendChild(li);
+      });
+    }
+
+    showMatchup();
+  </script>
+</body>
+</html>
